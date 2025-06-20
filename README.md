@@ -3,10 +3,12 @@ Room/Equipment Matching Using Computer Vision: Project Guide
 This guide provides an overview and instructions for using the Room/Equipment Matching project. This project leverages computer vision to analyze CAD architectural plans, extract room data, and match it with equipment data.
 
 Note: All ECB data has been removed from the following folders.
+
 1. Project Overview
 1.1 Project Name
 
 Room/Equipment Matching: Computer Vision Use Case
+
 1.2 Objective & Benefits
 
 This project aims to:
@@ -38,39 +40,39 @@ Beneficiaries: This project enhances data quality and reporting capabilities for
 
 2.2 Data Cleaning
 
-The following folders have been emptied from all the ECB Data. (Moved this up as it's a critical initial state).
-3. Project Administration
+The following folders have been emptied from all the ECB Data.
 
-(This section is empty. If there are no administrators, remove this heading. If there are, list them here.)
-4. Dependencies
-4.1 Poetry Dependency Management
+
+3. Dependencies
+3.1 Poetry Dependency Management
 
 Poetry is used for managing project dependencies.
 
     Install Poetry (if not already installed):
     Bash
+    conda install poetry
 
-conda install poetry
 
 Navigate to the project directory:
-Bash
 
-cd /path/to/your/project
+    Bash
+    cd /path/to/your/project
+
 
 Install project dependencies:
-Bash
 
+    Bash
     poetry install
 
-        Note: Ensure the pyproject.toml file exists in the directory. If poetry.lock does not exist, Poetry will generate it automatically.
+Note: Ensure the pyproject.toml file exists in the directory. If poetry.lock does not exist, Poetry will generate it automatically.
 
-4.2 Additional Dependencies
+3.2 Additional Dependencies
 
 For ECB-related Python packages, install them using your preferred package manager (e.g., pip or conda).
-5. Script Usage
+4. Script Usage
 
 The project comprises three main processing scripts and one utility function for data aggregation.
-5.1 Pre-processing Floor Plans
+4.1 Pre-processing Floor Plans
 
     Script: pre_processing_floor_plan.py
     Purpose: Process ECB architectural plans to extract pixel coordinates of rooms.
@@ -115,37 +117,35 @@ The project comprises three main processing scripts and one utility function for
             n_index_facade (int)
     Output: .csv files containing pixel coordinates for rooms, nodes, and computer vision-detected rooms.
 
-5.2 Refining Pixel Coordinates
+4.2 Refining Pixel Coordinates
 
     Script: refining_pixels_coordinates.py
     Purpose: Improve computer vision results using mathematical functions and incorporate manual ECB inputs/corrections.
     Input: Overall hyperparameter .csv file.
     Execution: Run the script for all floors in the input file using:
-    Bash
 
     python refining_pixels_coordinates.py --auto_complete=yes
 
     Output: Refined .csv files with updated pixel coordinates and associated rooms.
 
-5.3 Room Naming and Links
+4.3 Room Naming and Links
 
     Script: room_naming_and_links.py
     Purpose: Match computer vision-detected room coordinates with ECB-defined room names and visualize the results.
     Input: Floor name (e.g., HS04).
     Execution:
-    Bash
 
     python room_naming_and_links.py --floor HS04
 
     Output: .csv files containing room-equipment mappings and coordinate details.
 
-5.4 Final Data Aggregation
+4.4 Final Data Aggregation
 
     Utility Function: functions.ROOM_NAMING.final_df_concatination
     Purpose: Combine all generated .csv files into a single Excel (.xlsx) file for easier analysis and access.
     Output: A consolidated .xlsx file containing all relevant project data.
 
-6. Visualizations
+5. Visualizations
 
 Work is ongoing to develop enhanced floor visualizations, including:
 
