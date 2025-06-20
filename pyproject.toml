@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "room-planning"
+version = "0.1.0"
+description = "Libraries outside of the ECB opensources network necessary for the project"
+authors = ["B.L."]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.12.5"
+pandas = "^2.2.2"
+numpy = "^2.1.1"
+dvc = "^3.55.2"
+plotly = "^5.24.0"
+dash = "^2.18.0"
+tqdm = "^4.66.5"
+ipykernel = "^6.29.5"
+openpyxl = "^3.1.5"
+pdf2image = "^1.17.0"
+poppler-utils = "^0.1.0"
+torch = "^2.4.1"
+torchvision = "^0.19.1"
+matplotlib = "^3.9.2"
+scikit-image = "^0.24.0"
+scikit-learn = "^1.5.2"
+pybresenham = "^0.0.7"
+argparse = "^1.4.0"
+opencv-contrib-python = "^4.11.0.86"
+bytesio = "^0.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "proxy-ecb"
+url = "https://artifactory.sofa.dev/artifactory/api/pypi/pypi-remote/simple"
+
+[[tool.poetry.source]]
+name = 'proxy-ecb2'
+url = 'https://artifactory.sofa.dev/artifactory/api/pypi/pypi-local/simple'
+
+[[tool.poetry.source]]
+name = 'proxy-ecb3'
+url = 'https://artifactory.sofa.dev/artifactory/api/pypi/disc-ddp-pypi-local/simple'
