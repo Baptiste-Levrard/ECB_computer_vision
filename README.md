@@ -1,150 +1,158 @@
-README: Room/Equipment Matching Using Computer Vision
-This project aims to analyze CAD architectural plans of building floors, retrieve room data, and match it with equipment data using computer vision. The process involves cleaning data, extracting room coordinates, associating equipment to rooms, and producing visualizations. Below, you will find an organized guide for using the project scripts and understanding the workflow.
+Room/Equipment Matching Using Computer Vision: Project Guide
 
+This guide provides an overview and instructions for using the Room/Equipment Matching project. This project leverages computer vision to analyze CAD architectural plans, extract room data, and match it with equipment data.
+
+Note: All ECB data has been removed from the following folders.
 1. Project Overview
-2. 
 1.1 Project Name
+
 Room/Equipment Matching: Computer Vision Use Case
+1.2 Objective & Benefits
 
-1.2 Objective & Beneficiary
+This project aims to:
 
-Analyze CAD architectural plans for each floor of main buildings.
-Retrieve the area and coordinates of rooms.
-Match equipment positions from Planon to rooms.
-Align ECB room names to the correct rooms using computer vision.
+    Analyze CAD architectural plans for each floor of main buildings.
+    Retrieve room area and coordinates.
+    Match equipment positions (from Planon) to corresponding rooms.
+    Align ECB room names with the correct rooms using computer vision.
 
-1.3 Key Metrics
+Beneficiaries: This project enhances data quality and reporting capabilities for facility management and planning.
+1.3 Key Metrics & Improvements
 
-Data Cleaning and Quality: Improve Planon’s data quality.
-Reporting and Speed: Develop faster and more accurate visualizations for floor layouts.
-Improvements: Focus on fixing the room_naming_and_links.py script for better accuracy in room-equipment matching.
+    Data Quality: Improve Planon's equipment data quality by accurately associating it with rooms.
+    Reporting & Speed: Generate faster and more accurate visualizations of floor layouts.
+    Accuracy Enhancement: Focus on improving the room_naming_and_links.py script to achieve higher accuracy in room-equipment matching.
 
 1.4 Deliverables
 
-Accurate room-to-equipment mapping.
-Visualizations of floor layouts, including 2D visualizations and scatter plots of equipment.
-Consolidated data files for easier analysis.
+    Accurate room-to-equipment mappings.
+    Visualizations of floor layouts, including 2D representations and equipment scatter plots.
+    Consolidated data files for streamlined analysis.
 
-2. Data Storage
+2. Data Management
+2.1 Data Locations
 
-2.1 Locations
+    Darwin: Organized folders for storing raw (floors, rooms, equipment) and processed floor data.
+    GitLab: Project repository containing CAD plans and all project scripts.
+    Planon: Primary source for equipment data.
 
-Darwin: Organized folders for floors, rooms, equipment, and processed floor data.
-Darwin Link
-GitLab: Repository containing CAD plans and scripts.
-Planon: Source of equipment data.
+2.2 Data Cleaning
 
-3. Project Administrators
+The following folders have been emptied from all the ECB Data. (Moved this up as it's a critical initial state).
+3. Project Administration
 
-4. 
-Almeida Fernando
-Comoretto Luca
-Menghelin Sebastiano
-
-5. Dependencies
-
+(This section is empty. If there are no administrators, remove this heading. If there are, list them here.)
+4. Dependencies
 4.1 Poetry Dependency Management
-Install Poetry using Conda:
+
+Poetry is used for managing project dependencies.
+
+    Install Poetry (if not already installed):
+    Bash
+
 conda install poetry
-Navigate to the project directory.
+
+Navigate to the project directory:
+Bash
+
+cd /path/to/your/project
+
 Install project dependencies:
-poetry install
-(Note: Ensure the pyproject.toml file exists before running this command. If the poetry.lock file does not exist, Poetry will automatically generate it.)
+Bash
+
+    poetry install
+
+        Note: Ensure the pyproject.toml file exists in the directory. If poetry.lock does not exist, Poetry will generate it automatically.
 
 4.2 Additional Dependencies
+
 For ECB-related Python packages, install them using your preferred package manager (e.g., pip or conda).
+5. Script Usage
 
-5. Scripts Usage
-The project consists of 3 main scripts and 1 utility function for data aggregation.
-
+The project comprises three main processing scripts and one utility function for data aggregation.
 5.1 Pre-processing Floor Plans
-Script: pre_processing_floor_plan.py
-Purpose: Process ECB architectural plans to retrieve pixel coordinates of rooms.
-Input:
 
-CAD plans in .pdf format (located in the Plans folder).
-North Building Plans:
-ASPART-9-ECBCS-{floor}0-oooooo-G-BAJ001-000000 Grid.pdf
-ASPART-9-ECBCS-{floor}0-oooooo-G-BAJ001-000000 Model.pdf
-South Building Plans:
-ASPART-9-ECBCS-HS-{floor}0-oooooo-G-BAJ001-000000 Grid.pdf
-ASPART-9-ECBCS-HS-{floor}0-oooooo-G-BAJ001-000000 Model.pdf
-User-defined variables (these will be prompted during script execution):
-floor=str
-letter_horizontal=str
-letter_vertical=str
-letter_horizontal_facade=str
-letter_vertical_facade=str
-angle1=float
-angle2=float
-min_size_trapeze_line=int
-x=int
-y=int
-angle_calculation=int
-area_threshold=float
-vertex_threshold=int
-number_false_room=int
-area_threshold_bigger_rooms=int
-bbox_area=float
-aspect_ratio_threshold=float
-balcony_area_detected=int
-number_false_room_transfer=int
-number_balcony_transfer_room=int
-angle_floor=int
-tolerance_x_floor=int
-tolerance_y_floor=int
-y_threshold_floor=int
-a_index_floor=int
-angle_facade=float
-tolerance_x_facade=int
-tolerance_y_facade=int
-y_threshold_facade=int
-n_index_facade=int
-Output:
-.csv files with pixel coordinates for rooms, nodes, and computer vision-detected rooms.
+    Script: pre_processing_floor_plan.py
+    Purpose: Process ECB architectural plans to extract pixel coordinates of rooms.
+    Input:
+        CAD plans in .pdf format (located in the Plans folder).
+            North Building Plans:
+                ASPART-9-ECBCS-{floor}0-oooooo-G-BAJ001-000000 Grid.pdf
+                ASPART-9-ECBCS-{floor}0-oooooo-G-BAJ001-000000 Model.pdf
+            South Building Plans:
+                ASPART-9-ECBCS-HS-{floor}0-oooooo-G-BAJ001-000000 Grid.pdf
+                ASPART-9-ECBCS-HS-{floor}0-oooooo-G-BAJ001-000000 Model.pdf
+        User-Defined Variables: The script will prompt for the following variables during execution:
+            floor (str)
+            letter_horizontal (str)
+            letter_vertical (str)
+            letter_horizontal_facade (str)
+            letter_vertical_facade (str)
+            angle1 (float)
+            angle2 (float)
+            min_size_trapeze_line (int)
+            x (int)
+            y (int)
+            angle_calculation (int)
+            area_threshold (float)
+            vertex_threshold (int)
+            number_false_room (int)
+            area_threshold_bigger_rooms (int)
+            bbox_area (float)
+            aspect_ratio_threshold (float)
+            balcony_area_detected (int)
+            number_false_room_transfer (int)
+            number_balcony_transfer_room (int)
+            angle_floor (int)
+            tolerance_x_floor (int)
+            tolerance_y_floor (int)
+            y_threshold_floor (int)
+            a_index_floor (int)
+            angle_facade (float)
+            tolerance_x_facade (int)
+            tolerance_y_facade (int)
+            y_threshold_facade (int)
+            n_index_facade (int)
+    Output: .csv files containing pixel coordinates for rooms, nodes, and computer vision-detected rooms.
 
 5.2 Refining Pixel Coordinates
-Script: refining_pixels_coordinates.py
-Purpose: Improve computer vision results using mathematical functions and handle manual ECB input/mistakes.
-Input:
 
-Overall hyperparameter .csv file.
-Run the script for all floors in the file using:
---auto_complete=yes
-Output:
-Refined .csv files with pixel coordinates and associated rooms.
+    Script: refining_pixels_coordinates.py
+    Purpose: Improve computer vision results using mathematical functions and incorporate manual ECB inputs/corrections.
+    Input: Overall hyperparameter .csv file.
+    Execution: Run the script for all floors in the input file using:
+    Bash
+
+    python refining_pixels_coordinates.py --auto_complete=yes
+
+    Output: Refined .csv files with updated pixel coordinates and associated rooms.
 
 5.3 Room Naming and Links
-Script: room_naming_and_links.py
-Purpose: Match computer vision coordinates with ECB-defined room names and visualize the results.
-Input:
 
-Floor name (e.g., HS04):
---floor HS04
-Output:
-.csv files with room-equipment mappings and coordinate details.
+    Script: room_naming_and_links.py
+    Purpose: Match computer vision-detected room coordinates with ECB-defined room names and visualize the results.
+    Input: Floor name (e.g., HS04).
+    Execution:
+    Bash
+
+    python room_naming_and_links.py --floor HS04
+
+    Output: .csv files containing room-equipment mappings and coordinate details.
 
 5.4 Final Data Aggregation
-Utility Function: final_df_concatination.py
-Location: functions.ROOM_NAMING.final_df_concatination
-Purpose: Combine all .csv files into a single Excel file for easier access.
-Output:
 
-Consolidated .xlsx file with all relevant data.
+    Utility Function: functions.ROOM_NAMING.final_df_concatination
+    Purpose: Combine all generated .csv files into a single Excel (.xlsx) file for easier analysis and access.
+    Output: A consolidated .xlsx file containing all relevant project data.
 
 6. Visualizations
-Efforts are underway to create better floor visualizations, such as:
 
-2D visualizations highlighting rooms.
-Scatter plots showing equipment positions.
+Work is ongoing to develop enhanced floor visualizations, including:
 
-7. Jira Tickets
-This project is tracked under Jira ticket:
+    2D visualizations highlighting detected rooms.
+    Scatter plots illustrating equipment positions within floor layouts.
 
-DGAFSA-1276 - Vision-Based Equipment-Room Mapping in Floor Layouts.
+7. Known Issues
 
-8. Known Issues
-The room_naming_and_links.py script does not yet provide 100% correct results for all floors. Improvements are being made iteratively.
-Pre-processing functions may need adaptation for specific floors (e.g., HN27, HS14, HS38).
-
-For any questions or issues, please contact the project administrators.
+    The room_naming_and_links.py script currently does not provide 100% accurate results for all floors. Continuous improvements are being made.
+    Pre-processing functions may require specific adaptations for certain floors (e.g., HN27, HS14, HS38).
