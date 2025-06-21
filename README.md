@@ -1,15 +1,15 @@
-Room/Equipment Matching Using Computer Vision: Project Guide
+# Room/Equipment Matching Using Computer Vision: Project Guide
 
 This guide provides an overview and instructions for using the Room/Equipment Matching project. This project leverages computer vision to analyze CAD architectural plans, extract room data, and match it with equipment data.
 
 Note: All ECB data has been removed from the following folders.
 
-1. Project Overview
-1.1 Project Name
+## 1. Project Overview
+### 1.1 Project Name
 
 Room/Equipment Matching: Computer Vision Use Case
 
-1.2 Objective & Benefits
+### 1.2 Objective & Benefits
 
 This project aims to:
 
@@ -18,33 +18,36 @@ This project aims to:
     Match equipment positions (from Planon) to corresponding rooms.
     Align ECB room names with the correct rooms using computer vision.
 
-Beneficiaries: This project enhances data quality and reporting capabilities for facility management and planning.
-1.3 Key Metrics & Improvements
+Beneficiaries: 
+
+    This project enhances data quality and reporting capabilities for facility management and planning.
+
+### 1.3 Key Metrics & Improvements
 
     Data Quality: Improve Planon's equipment data quality by accurately associating it with rooms.
     Reporting & Speed: Generate faster and more accurate visualizations of floor layouts.
     Accuracy Enhancement: Focus on improving the room_naming_and_links.py script to achieve higher accuracy in room-equipment matching.
 
-1.4 Deliverables
+### 1.4 Deliverables
 
     Accurate room-to-equipment mappings.
     Visualizations of floor layouts, including 2D representations and equipment scatter plots.
     Consolidated data files for streamlined analysis.
 
-2. Data Management
-2.1 Data Locations
+## 2. Data Management
+### 2.1 Data Locations
 
-    Darwin: Organized folders for storing raw (floors, rooms, equipment) and processed floor data.
-    GitLab: Project repository containing CAD plans and all project scripts.
-    Planon: Primary source for equipment data.
+        Darwin: Organized folders for storing raw (floors, rooms, equipment) and processed floor data.
+        GitLab: Project repository containing CAD plans and all project scripts.
+        Planon: Primary source for equipment data.
 
-2.2 Data Cleaning
+### 2.2 Data Cleaning
 
-The following folders have been emptied from all the ECB Data.
+    The following folders have been emptied from all the ECB Data.
 
 
-3. Dependencies
-3.1 Poetry Dependency Management
+## 3. Dependencies
+### 3.1 Poetry Dependency Management
 
 Poetry is used for managing project dependencies.
 
@@ -66,13 +69,15 @@ Install project dependencies:
 
 Note: Ensure the pyproject.toml file exists in the directory. If poetry.lock does not exist, Poetry will generate it automatically.
 
-3.2 Additional Dependencies
+### 3.2 Additional Dependencies
 
-For ECB-related Python packages, install them using your preferred package manager (e.g., pip or conda).
-4. Script Usage
+    For ECB-related Python packages, install them using your preferred package manager (e.g., pip or conda).
 
-The project comprises three main processing scripts and one utility function for data aggregation.
-4.1 Pre-processing Floor Plans
+## 4. Script Usage
+   
+        The project comprises three main processing scripts and one utility function for data aggregation.
+   
+### 4.1 Pre-processing Floor Plans
 
     Script: pre_processing_floor_plan.py
     Purpose: Process ECB architectural plans to extract pixel coordinates of rooms.
@@ -117,7 +122,7 @@ The project comprises three main processing scripts and one utility function for
             n_index_facade (int)
     Output: .csv files containing pixel coordinates for rooms, nodes, and computer vision-detected rooms.
 
-4.2 Refining Pixel Coordinates
+### 4.2 Refining Pixel Coordinates
 
     Script: refining_pixels_coordinates.py
     Purpose: Improve computer vision results using mathematical functions and incorporate manual ECB inputs/corrections.
@@ -128,7 +133,7 @@ The project comprises three main processing scripts and one utility function for
 
     Output: Refined .csv files with updated pixel coordinates and associated rooms.
 
-4.3 Room Naming and Links
+### 4.3 Room Naming and Links
 
     Script: room_naming_and_links.py
     Purpose: Match computer vision-detected room coordinates with ECB-defined room names and visualize the results.
@@ -139,20 +144,15 @@ The project comprises three main processing scripts and one utility function for
 
     Output: .csv files containing room-equipment mappings and coordinate details.
 
-4.4 Final Data Aggregation
+### 4.4 Final Data Aggregation
 
     Utility Function: functions.ROOM_NAMING.final_df_concatination
     Purpose: Combine all generated .csv files into a single Excel (.xlsx) file for easier analysis and access.
     Output: A consolidated .xlsx file containing all relevant project data.
 
-5. Visualizations
+## 5. Visualizations
 
 Work is ongoing to develop enhanced floor visualizations, including:
 
     2D visualizations highlighting detected rooms.
     Scatter plots illustrating equipment positions within floor layouts.
-
-7. Known Issues
-
-    The room_naming_and_links.py script currently does not provide 100% accurate results for all floors. Continuous improvements are being made.
-    Pre-processing functions may require specific adaptations for certain floors (e.g., HN27, HS14, HS38).
