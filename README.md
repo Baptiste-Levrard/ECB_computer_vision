@@ -13,37 +13,37 @@ Room/Equipment Matching: Computer Vision Use Case
 
 This project aims to:
 
-    Analyze CAD architectural plans for each floor of main buildings.
-    Retrieve room area and coordinates.
-    Match equipment positions (from Planon) to corresponding rooms.
-    Align ECB room names with the correct rooms using computer vision.
+Analyze CAD architectural plans for each floor of main buildings.
+Retrieve room area and coordinates.
+Match equipment positions (from Planon) to corresponding rooms.
+Align ECB room names with the correct rooms using computer vision.
 
 Beneficiaries: 
 
-    This project enhances data quality and reporting capabilities for facility management and planning.
+This project enhances data quality and reporting capabilities for facility management and planning.
 
 ### 1.3 Key Metrics & Improvements
 
-    Data Quality: Improve Planon's equipment data quality by accurately associating it with rooms.
-    Reporting & Speed: Generate faster and more accurate visualizations of floor layouts.
-    Accuracy Enhancement: Focus on improving the room_naming_and_links.py script to achieve higher accuracy in room-equipment matching.
+Data Quality: Improve Planon's equipment data quality by accurately associating it with rooms.
+Reporting & Speed: Generate faster and more accurate visualizations of floor layouts.
+Accuracy Enhancement: Focus on improving the room_naming_and_links.py script to achieve higher accuracy in room-equipment matching.
 
 ### 1.4 Deliverables
 
-    Accurate room-to-equipment mappings.
-    Visualizations of floor layouts, including 2D representations and equipment scatter plots.
-    Consolidated data files for streamlined analysis.
+Accurate room-to-equipment mappings.
+Visualizations of floor layouts, including 2D representations and equipment scatter plots.
+Consolidated data files for streamlined analysis.
 
 ## 2. Data Management
 ### 2.1 Data Locations
 
-        Darwin: Organized folders for storing raw (floors, rooms, equipment) and processed floor data.
-        GitLab: Project repository containing CAD plans and all project scripts.
-        Planon: Primary source for equipment data.
+Darwin: Organized folders for storing raw (floors, rooms, equipment) and processed floor data.
+GitLab: Project repository containing CAD plans and all project scripts.
+Planon: Primary source for equipment data.
 
 ### 2.2 Data Cleaning
 
-    The following folders have been emptied from all the ECB Data.
+The following folders have been emptied from all the ECB Data.
 
 
 ## 3. Dependencies
@@ -71,11 +71,11 @@ Note: Ensure the pyproject.toml file exists in the directory. If poetry.lock doe
 
 ### 3.2 Additional Dependencies
 
-    For ECB-related Python packages, install them using your preferred package manager (e.g., pip or conda).
+For ECB-related Python packages, install them using your preferred package manager (e.g., pip or conda).
 
 ## 4. Script Usage
    
-        The project comprises three main processing scripts and one utility function for data aggregation.
+The project comprises three main processing scripts and one utility function for data aggregation.
    
 ### 4.1 Pre-processing Floor Plans
 
